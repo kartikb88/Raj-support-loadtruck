@@ -1,0 +1,19 @@
+please follow exact process to generate the excel report.
+required :
+node: 14.17
+vscode:latest
+git:latest
+steps to do basic setup:
+1.clone this repo from github
+2.fire command: npm install
+
+to Generate Testdata
+
+1. to generate the All countires.json data and all ports.json:
+    run file loadMatch.js= open the file and hit F5
+
+2. to generate the loadMatchDetails.json:
+    run file endToEnd_test.js= open the file and hit F5
+
+3. to generate the excel file
+run file writeToExcel.js= open the file and hit F5
