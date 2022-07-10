@@ -5,7 +5,6 @@ const path = require("path");
 var baseDir = path.resolve("./")
 describe("sc",()=>{
     it('tc',()=>{
-
         browser.url("https://www.loadmatch.com/login.cfm");
         $('[name="contact_username"]').setValue("tboston");
         $(`[name="contact_password"]`).setValue("terainc");
@@ -28,8 +27,8 @@ describe("sc",()=>{
             continue;
           }
           let city_state_arr = value.split("-")
-          let city = city_state_arr[0].trim()
-          let state =city_state_arr[1].trim()
+          let city = city_state_arr[1].trim()
+          let state =city_state_arr[0].trim()
           jsonmap.set("City",city)
           jsonmap.set("State",state)
           $(`((//tbody)[1]//tr/td)[24]`).waitForDisplayed()
