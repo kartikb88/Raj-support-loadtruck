@@ -34,7 +34,7 @@ describe("sc",()=>{
         var i = 0;
         for (let [key, value] of dataMap.entries()) {
           i= i+1
-          if (i>50){
+          if (i>200){
             break;
           }
           browser.pause(1000)

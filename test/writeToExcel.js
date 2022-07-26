@@ -8,6 +8,7 @@ const xl = require('excel4node');
 const wb = new xl.Workbook();
 const ws = wb.addWorksheet('New_Port_Details');
 
+
 var dataJson = fs.readFileSync(baseDir + "/testdata/loadMatchDetailsApi.json", "utf8"); //dir of your json file as param
 
 const dataObject = JSON.parse(dataJson);
@@ -59,4 +60,8 @@ values.forEach( record => {
 //     });
 //     rowIndex++;
 // }); 
-wb.write('All_ports_details.xlsx');
+var date = new Date()
+var current_time_stamp = date.toLocaleDateString()+"_"+date.getTime().toString()
+var filename = `All_ports_details_${current_time_stamp}.xlsx`
+
+wb.write(`All_ports_details.xlsx`);
