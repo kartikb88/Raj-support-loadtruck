@@ -37,7 +37,7 @@ describe("sc",()=>{
           if (i>50){
             break;
           }
-         // browser.pause(1000)
+          browser.pause(1000)
           browser.url(key);
           let ele_company_details = $(`(((//tbody)[1]//tr)[2]/td)[2]`);
           if (ele_company_details.isDisplayed() === false){
