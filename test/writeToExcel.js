@@ -20,7 +20,7 @@ values.push(JSON.parse(value))
 const headingColumnNames = [
     "City",
     "State",
-    "Company Details",
+    "Company Detail",
     "Tollfree:\\nPhone:\\nFax",
     "Contacts",
     "Company Description",
