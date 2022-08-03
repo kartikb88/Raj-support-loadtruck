@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require("path");
 const { default: pause } = require('webdriverio/build/commands/browser/pause');
-
-
 var baseDir = path.resolve("./")
 describe("sc",()=>{
     it('tc',()=>{
@@ -34,7 +32,7 @@ describe("sc",()=>{
         var i = 0;
         for (let [key, value] of dataMap.entries()) {
           i= i+1
-          if (i>200){
+          if (i>5000){
             break;
           }
           browser.pause(1000)

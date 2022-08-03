@@ -10,58 +10,63 @@ const ws = wb.addWorksheet('New_Port_Details');
 
 
 var dataJson = fs.readFileSync(baseDir + "/testdata/loadMatchDetailsApi.json", "utf8"); //dir of your json file as param
+describe("creating excel file",()=>{
 
-const dataObject = JSON.parse(dataJson);
-const dataObjectEntries = Object.entries(dataObject); 
-const dataMap = new Map(dataObjectEntries);
-var values = []
-for (let [key, value] of dataMap.entries()) {
-values.push(JSON.parse(value))
-}
-const headingColumnNames = [
-    "City",
-    "State",
-    "Company Detail",
-    "Tollfree:\\nPhone:\\nFax",
-    "Contacts",
-    "Company Description",
-    "Authority",
-    "Assets",
-    "Drayage Service",
-    "Ingate / Outgate",
-    "Notes",
-    "States Served",
-    "Tollfree"
-]
+    it("create excel file",()=>{
+         
+                        const dataObject = JSON.parse(dataJson);
+                        const dataObjectEntries = Object.entries(dataObject); 
+                        const dataMap = new Map(dataObjectEntries);
+                        var values = []
+                        for (let [key, value] of dataMap.entries()) {
+                        values.push(JSON.parse(value))
+                        }
+                        const headingColumnNames = [
+                            "City",
+                            "State",
+                            "Company Detail",
+                            "Tollfree:\\nPhone:\\nFax",
+                            "Contacts",
+                            "Company Description",
+                            "Authority",
+                            "Assets",
+                            "Drayage Service",
+                            "Ingate / Outgate",
+                            "Notes",
+                            "States Served",
+                            "Tollfree"
+                        ]
 
-//Write Column Title in Excel file
-let headingColumnIndex = 1;
-headingColumnNames.forEach(heading => {
-    ws.cell(1, headingColumnIndex++)
-        .string(heading)
-});
+                        //Write Column Title in Excel file
+                        let headingColumnIndex = 1;
+                        headingColumnNames.forEach(heading => {
+                            ws.cell(1, headingColumnIndex++)
+                                .string(heading)
+                        });
 
-//Write Data in Excel file
-let rowIndex = 2;
-values.forEach( record => {
-    let columnIndex = 1;
-    headingColumnNames.forEach(columnName =>{
-        ws.cell(rowIndex,columnIndex++)
-            .string(record [columnName])
-    });
-    rowIndex++;
-}); 
-// let rowIndex = 2;
-// values.forEach( record => {
-//     let columnIndex = 1;
-//     Object.keys(record ).forEach(columnName =>{
-//         ws.cell(rowIndex,columnIndex++)
-//             .string(record [columnName])
-//     });
-//     rowIndex++;
-// }); 
-var date = new Date()
-var current_time_stamp = date.toLocaleDateString()+"_"+date.getTime().toString()
-var filename = `All_ports_details_${current_time_stamp}.xlsx`
+                        //Write Data in Excel file
+                        let rowIndex = 2;
+                        values.forEach( record => {
+                            let columnIndex = 1;
+                            headingColumnNames.forEach(columnName =>{
+                                ws.cell(rowIndex,columnIndex++)
+                                    .string(record [columnName])
+                            });
+                            rowIndex++;
+                        }); 
+                        // let rowIndex = 2;
+                        // values.forEach( record => {
+                        //     let columnIndex = 1;
+                        //     Object.keys(record ).forEach(columnName =>{
+                        //         ws.cell(rowIndex,columnIndex++)
+                        //             .string(record [columnName])
+                        //     });
+                        //     rowIndex++;s
+                        // }); 
+                        // var date = new Date()
+                        // var current_time_stamp = date.toLocaleDateString()+"_"+date.getTime().toString()
+                        // var filename = `All_ports_details_${current_time_stamp}.xlsx`
 
-wb.write(`All_ports_details.xlsx`);
+                        wb.write(`All_ports_details.xlsx`);
+                        })
+})
