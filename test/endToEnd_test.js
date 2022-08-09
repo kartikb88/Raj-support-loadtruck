@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require("path");
-const { default: pause } = require('webdriverio/build/commands/browser/pause');
 var baseDir = path.resolve("./")
 describe("sc",()=>{
     it('tc',()=>{
@@ -30,12 +29,13 @@ describe("sc",()=>{
         var detailsMap =  new Map()
         var jsonmap =  new Map()
         var i = 0;
+
         for (let [key, value] of dataMap.entries()) {
           i= i+1
-          if (i>5000){
+          if (i>500){
             break;
           }
-          browser.pause(1000)
+          browser.pause(800)
           browser.url(key);
           let ele_company_details = $(`(((//tbody)[1]//tr)[2]/td)[2]`);
           if (ele_company_details.isDisplayed() === false){
@@ -118,6 +118,7 @@ describe("sc",()=>{
           dataMap_dataJson_consumed.set(key,value)
           dataMap.delete(key)
         }
+
         var detailsMap_json = Object.fromEntries(detailsMap);
         var detailsMap_json_str = JSON.stringify(detailsMap_json);
         fs.writeFileSync(baseDir+"/testdata/loadMatchDetailsApi.json",detailsMap_json_str)
@@ -142,8 +143,9 @@ describe("sc",()=>{
           baseDir + "/testdata/deletedJson_allPorts.json",
           deleted_json_str
         );
+   
     })
-
+    
 })
 
 
